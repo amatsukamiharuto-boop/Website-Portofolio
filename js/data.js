@@ -2,24 +2,24 @@
    DATA KONTEN — Edit file ini saja untuk mengganti isi website
    ========================================================== */
 const CONFIG = {
-  studio: 'Nama Studio',
-  founder: 'Nama Founder',
-  about: 'Saya Founder {studio}, studio indie kecil yang fokus pada pengembangan game, perangkat lunak bantu, dan aset game. Saya suka mengubah ide sederhana menjadi produk yang ringan, rapi, dan nyaman dipakai di perangkat apa pun.',
-  whatsapp: '6281234567890',        // format internasional, tanpa + dan tanpa 0 di depan
+  studio: 'Hitotobi Games',
+  founder: 'Mohammad Aqso Ar Rozzaq',
+  about: 'Saya Founder, dan Developer dari {studio}, saya adalah seorang Games Developer, Asset Developer dan APP Developer.',
+  whatsapp: '6287825097850',        // format internasional, tanpa + dan tanpa 0 di depan
   waMessage: 'Halo, saya ingin diskusi tentang proyek.',
   email: 'halo@namastudio.com',
   nowWorking: {
-    title: 'Project Nebula',
-    desc: 'Game puzzle-platformer 2D dengan mekanik gravitasi. Saat ini menggarap level 6–10 dan sistem checkpoint.',
-    progress: 62,
-    tags: ['Unity', 'C#', 'Aseprite']
+    title: 'Three Word Left Unsaid',
+    desc: 'Adalah Game RPG Fantasi Romantis yang bercerita tentang seorang Karakter bernama Haru yang ingin mengutarakan cintanya pada seorang gadis pujaanya namun di balik itu semua akan ada banyak cobaan dalam kisah ini, akankah Tokoh utama Haru bisa menguatarakan perasaanya?.',
+    progress: 40,
+    tags: ['RPG Maker MZ']
   },
   // slug ikon: https://simpleicons.org  (contoh: github, discord, itchdotio, youtube, instagram)
   socials: [
-    { slug: 'itchdotio', label: 'Itch.io', url: 'https://itch.io/' },
+    { slug: 'itchdotio', label: 'Itch.io', url: 'https://hitotobi-games.itch.io/' },
     { slug: 'github',    label: 'GitHub',  url: 'https://github.com/' },
     { slug: 'discord',   label: 'Discord', url: 'https://discord.com/' },
-    { slug: 'youtube',   label: 'YouTube', url: 'https://youtube.com/' }
+    { slug: 'youtube',   label: 'YouTube', url: 'https://youtube.com/@hitotobigames?si=lMAkcXm9KwBhXyWi' }
   ]
 };
 
