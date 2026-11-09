@@ -29,7 +29,7 @@ const STACK1 = [
   ['unity','unity-original','Unity',1], ['csharp','csharp-original','C#'], ['godot','godot-original','Godot'],
   ['cplusplus','cplusplus-original','C++'], ['unrealengine','unrealengine-original','Unreal Engine',1],
   ['lua','lua-original','Lua'], ['blender','blender-original','Blender'], ['figma','figma-original','Figma'],
-  ['photoshop','photoshop-plain','Photoshop',1], ['illustrator','illustrator-plain','Illustrator',1], ['rpgmakermz','rpg-maker-mz','RPG Maker MZ',1]
+  ['photoshop','photoshop-plain','Photoshop',1], ['illustrator','illustrator-plain','Illustrator',1]
 ];
    
 ];
