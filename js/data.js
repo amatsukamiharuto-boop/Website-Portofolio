@@ -25,18 +25,16 @@ const CONFIG = {
 
 // [folder-devicon, file-devicon, label, mono?]  — daftar ikon: https://devicon.dev
 // mono = 1 untuk ikon berwarna hitam (otomatis dibalik di mode gelap)
-const STACK1 = [
-  ['unity','unity-original','Unity',1], ['csharp','csharp-original','C#'], ['godot','godot-original','Godot'],
-  ['cplusplus','cplusplus-original','C++'], ['unrealengine','unrealengine-original','Unreal Engine',1],
-  ['lua','lua-original','Lua'], ['blender','blender-original','Blender'], ['figma','figma-original','Figma'],
-  ['photoshop','photoshop-plain','Photoshop',1], ['illustrator','illustrator-plain','Illustrator',1]
+const STACK1 = [   // App & Game
+  ['flutter','flutter-original','Flutter'], ['dart','dart-original','Dart'],
+  ['kotlin','kotlin-original','Kotlin'], ['android','android-original','Android'],
+  ['androidstudio','androidstudio-original','Android Studio'],
 ];
-const STACK2 = [
-  ['javascript','javascript-original','JavaScript'], ['typescript','typescript-original','TypeScript'],
-  ['nodejs','nodejs-original','Node.js'], ['python','python-original','Python'],
+const STACK2 = [   // Web
   ['html5','html5-original','HTML5'], ['css3','css3-original','CSS3'],
-  ['tailwindcss','tailwindcss-original','Tailwind CSS'], ['git','git-original','Git'],
-  ['github','github-original','GitHub',1], ['java','java-original','Java']
+  ['javascript','javascript-original','JavaScript'], ['tailwindcss','tailwindcss-original','Tailwind CSS'],
+  ['git','git-original','Git'], ['github','github-original','GitHub',1],
+  ['vscode','vscode-original','VS Code']
 ];
 
 // cat = kategori filter (tab dibuat otomatis). video = URL embed YouTube, kosongkan jika tidak ada.
