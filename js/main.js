@@ -50,9 +50,13 @@ safe('tema', () => {
 
 safe('marquee', () => {
   const fillRow = (el, list) => {
-    const one = list.map(([dir, file, name, mono]) =>
-      `<div class="chip surface" title="${name}"><img class="${mono ? 'mono' : ''}" src="${DEVICON}${dir}/${file}.svg" alt="${name}" width="42" height="42" decoding="async"></div>`).join('');
-    const group = one.repeat(4);
+    // dir === 'img' -> file adalah alamat gambar sendiri (mis. 'assets/rpgmaker.png'); selain itu pakai Devicon
+    const one = list.map(([dir, file, name, mono]) => {
+      const src = dir === 'img' ? file : `${DEVICON}${dir}/${file}.svg`;
+      return `<div class="chip surface" title="${name}"><img class="${mono ? 'mono' : ''}" src="${src}" alt="${name}" width="42" height="42" decoding="async" onerror="this.replaceWith(Object.assign(document.createElement('span'),{textContent:this.alt,className:'text-xs font-semibold text-center px-1'}))"></div>`;
+    }).join('');
+    const reps = Math.max(2, Math.ceil(2800 / (Math.max(list.length, 1) * 92)));
+    const group = one.repeat(reps);
     el.innerHTML = group + group;
   };
   fillRow($('#row1'), S1); fillRow($('#row2'), S2);
