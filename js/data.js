@@ -31,8 +31,6 @@ const STACK1 = [
   ['lua','lua-original','Lua'], ['blender','blender-original','Blender'], ['figma','figma-original','Figma'],
   ['photoshop','photoshop-plain','Photoshop',1], ['illustrator','illustrator-plain','Illustrator',1]
 ];
-   
-];
 const STACK2 = [
   ['javascript','javascript-original','JavaScript'], ['typescript','typescript-original','TypeScript'],
   ['nodejs','nodejs-original','Node.js'], ['python','python-original','Python'],
