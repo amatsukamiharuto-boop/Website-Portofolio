@@ -23,18 +23,25 @@ const CONFIG = {
   ]
 };
 
-// [folder-devicon, file-devicon, label, mono?]  — daftar ikon: https://devicon.dev
+// Format: [folder, file, 'Nama', mono?]  — ikon dari https://devicon.dev
+// Ikon sendiri (mis. RPG Maker): ['img', 'assets/rpgmaker.png', 'RPG Maker MZ']
+//   -> taruh gambar PNG transparan persegi (±128px) di folder assets/
 // mono = 1 untuk ikon berwarna hitam (otomatis dibalik di mode gelap)
-const STACK1 = [   // App & Game
-  ['flutter','flutter-original','Flutter'], ['dart','dart-original','Dart'],
-  ['kotlin','kotlin-original','Kotlin'], ['android','android-original','Android'],
-  ['androidstudio','androidstudio-original','Android Studio'],
+// Hapus baris yang tidak kamu pakai, tambah sesuai kebutuhan.
+
+// Baris 1 (bergerak ke kiri): Game & Asset
+const STACK1 = [
+  ['img','assets/RPG Maker.jpg','RPG Maker MZ'],
+  ['javascript','javascript-original','JavaScript'],
 ];
-const STACK2 = [   // Web
-  ['html5','html5-original','HTML5'], ['css3','css3-original','CSS3'],
-  ['javascript','javascript-original','JavaScript'], ['tailwindcss','tailwindcss-original','Tailwind CSS'],
-  ['git','git-original','Git'], ['github','github-original','GitHub',1],
-  ['vscode','vscode-original','VS Code']
+// Baris 2 (bergerak ke kanan): App Development
+const STACK2 = [
+  ['flutter','flutter-original','Flutter'],
+  ['dart','dart-original','Dart'],
+  ['kotlin','kotlin-original','Kotlin'],
+  ['android','android-original','Android'],
+  ['androidstudio','androidstudio-original','Android Studio'],
+  ['github','github-original','GitHub',1]
 ];
 
 // cat = kategori filter (tab dibuat otomatis). video = URL embed YouTube, kosongkan jika tidak ada.
