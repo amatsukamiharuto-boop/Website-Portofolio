@@ -5,6 +5,7 @@ const root = document.documentElement;
 const SI = 'https://cdn.jsdelivr.net/npm/simple-icons@11.14.0/icons/';
 const DEVICON = 'https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/icons/';
 const errors = [];
+let profileCard = null;
 function safe(name, fn) { try { fn(); } catch (e) { console.error('[Portofolio] ' + name, e); errors.push(name + ' (' + e.message + ')'); } }
 
 const C = typeof CONFIG !== 'undefined' ? CONFIG : null;
@@ -23,7 +24,6 @@ safe('teks dasar', () => {
   set('[data-studio]', cfg.studio); set('[data-founder]', cfg.founder);
   if (cfg.about) $('#aboutText').textContent = cfg.about.replace('{studio}', cfg.studio || '');
   if (cfg.studio) document.title = cfg.studio;
-  if (cfg.photo) $('#photo').src = cfg.photo;
   $('#year').textContent = new Date().getFullYear();
 });
 
@@ -44,6 +44,7 @@ safe('status proyek', () => {
 safe('tema', () => {
   $('#themeBtn').onclick = () => {
     root.classList.toggle('light');
+    if (profileCard) profileCard.setTheme(root.classList.contains('light') ? 'light' : 'dark');
     try { localStorage.setItem('theme', root.classList.contains('light') ? 'light' : 'dark'); } catch (e) {}
   };
 });
@@ -121,6 +122,22 @@ safe('sosial', () => {
   $('#socials').innerHTML = (cfg.socials || []).map(s =>
     `<a href="${s.url}" target="_blank" rel="noopener noreferrer" aria-label="${s.label}" title="${s.label}" class="iconbtn"><span class="ico" data-si="${s.slug}"></span></a>`).join('');
   applyIcons();
+});
+
+safe('kartu profil', () => {
+  if (typeof createProfileCard !== 'function') throw new Error('js/profilecard.js belum dimuat');
+  profileCard = createProfileCard($('#profileCard'), {
+    avatarUrl: cfg.photo || 'assets/foto.jpg',
+    miniAvatarUrl: cfg.logo || 'assets/Hitotobi_Games_logo.png',
+    name: cfg.founder || '',
+    title: cfg.role || 'Game · Asset · App Developer',
+    handle: cfg.handle || 'hitotobigames',
+    status: 'Aktif',
+    contactText: 'Hubungi',
+    theme: root.classList.contains('light') ? 'light' : 'dark',
+    holo: 0.8, glare: 0.5, tiltStrength: 12, parallax: 8, radius: 16, intro: true,
+    onContactClick: () => $('#whatsapp').scrollIntoView({ behavior: 'smooth' })
+  });
 });
 
 safe('animasi AOS', () => {
