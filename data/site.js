@@ -1,4 +1,10 @@
+/* ==========================================================
+   DATA KONTEN — Edit file ini saja untuk mengganti isi website
+   Teks dua bahasa ditulis { id: '...', en: '...' }
+   Gambar ada di public/assets/  (ditulis 'assets/namafile.jpg')
+   ========================================================== */
 
+// 'assets/foto.jpg' -> '/assets/foto.jpg' (spasi di nama file otomatis aman)
 export const asset = p => {
   if (!p) return '';
   const s = /^(https?:)?\/\//.test(p) || p.startsWith('/') ? p : '/' + p;
@@ -50,9 +56,9 @@ export const CONFIG = {
     },
     // progress = 0 sampai 100. title (opsional) = nama chapter dua bahasa.
     chapters: [
-      { name: 'Chapter 1', progress: 40 },
-      { name: 'Chapter 2', progress: 0 },
-      { name: 'Chapter 3', progress: 0 },
+      { name: 'Chapter 1', progress: 100 },
+      { name: 'Chapter 2', progress: 80 },
+      { name: 'Chapter 3', progress: 20 },
       { name: 'Chapter 4', progress: 0 },
       { name: 'Chapter 5', progress: 0 }
     ],
@@ -72,7 +78,7 @@ export const CONFIG = {
 // Ikon sendiri: ['img', 'assets/namafile.png', 'Nama']  (taruh di public/assets/)
 // mono = 1 untuk ikon berwarna hitam (otomatis dibalik di mode gelap)
 export const STACK1 = [
-  ['img', 'assets/RPG Maker.jpg', 'RPG Maker'],
+  ['img', 'assets/RPG Maker.jpg', 'RPG Maker MZ'],
   ['javascript', 'javascript-original', 'JavaScript']
 ];
 export const STACK2 = [
@@ -85,31 +91,24 @@ export const STACK2 = [
 ];
 
 // cat = kunci kategori: 'game' | 'tools' | 'asset'  (label ada di data/i18n.js -> CATS)
+//   Tab filter hanya muncul kalau ada lebih dari satu kategori.
+// img = gambar thumbnail di public/assets/ (ditulis 'assets/namafile.png'). Jika belum ada, tampil kotak berwarna.
 // video = URL embed YouTube, kosongkan jika tidak ada. links[].i = slug ikon (opsional)
+// TODO: ganti `u` dengan alamat halaman tiap game, contoh: https://hitotobi-games.itch.io/nama-game
 export const PROJECTS = [
-  { title: 'Project Nebula', cat: 'game', img: 'https://placehold.co/640x360/2a2545/2ee6c8?text=Nebula',
-    desc: { id: 'Puzzle-platformer 2D dengan mekanik pembalik gravitasi.', en: '2D puzzle-platformer with a gravity-flipping mechanic.' },
-    long: { id: 'Puzzle-platformer 2D di mana pemain membalik arah gravitasi untuk menyelesaikan rintangan.', en: 'A 2D puzzle-platformer where the player flips gravity to clear obstacles.' },
-    video: 'https://www.youtube.com/embed/dQw4w9WgXcQ',
-    links: [{ l: { id: 'Mainkan di Itch.io', en: 'Play on Itch.io' }, u: 'https://itch.io/', i: 'itchdotio' }, { l: { id: 'Source code', en: 'Source code' }, u: 'https://github.com/', i: 'github' }] },
-  { title: 'Pixel Tower', cat: 'game', img: 'https://placehold.co/640x360/2a2545/8b7bff?text=Pixel+Tower',
-    desc: { id: 'Tower defense pixel art dengan 12 jenis menara.', en: 'Pixel-art tower defense with 12 tower types.' },
-    long: { id: 'Tower defense pixel art dengan 12 menara, 30 gelombang musuh, dan sistem upgrade bercabang.', en: 'Pixel-art tower defense with 12 towers, 30 enemy waves, and a branching upgrade system.' },
-    video: '', links: [{ l: { id: 'Mainkan di Itch.io', en: 'Play on Itch.io' }, u: 'https://itch.io/', i: 'itchdotio' }] },
-  { title: 'AssetPacker', cat: 'tools', img: 'https://placehold.co/640x360/2a2545/ffb86b?text=AssetPacker',
-    desc: { id: 'Tool desktop untuk mengemas sprite menjadi atlas.', en: 'Desktop tool that packs sprites into an atlas.' },
-    long: { id: 'Aplikasi ringan untuk menggabungkan banyak sprite menjadi satu texture atlas.', en: 'A lightweight app that merges many sprites into a single texture atlas.' },
-    video: '', links: [{ l: { id: 'Unduh', en: 'Download' }, u: 'https://itch.io/', i: 'itchdotio' }, { l: { id: 'GitHub', en: 'GitHub' }, u: 'https://github.com/', i: 'github' }] },
-  { title: 'LevelKit', cat: 'tools', img: 'https://placehold.co/640x360/2a2545/93c5fd?text=LevelKit',
-    desc: { id: 'Editor level berbasis web untuk prototipe cepat.', en: 'Web-based level editor for quick prototyping.' },
-    long: { id: 'Editor level di browser: letakkan tile, simpan sebagai JSON, lalu muat di game.', en: 'A browser level editor: place tiles, save as JSON, then load it in your game.' },
-    video: '', links: [{ l: { id: 'Coba demo', en: 'Try the demo' }, u: 'https://github.com/' }] },
-  { title: 'Dungeon Tileset', cat: 'asset', img: 'https://placehold.co/640x360/2a2545/f472b6?text=Dungeon+Tileset',
-    desc: { id: 'Paket tileset pixel art bertema dungeon, 16×16.', en: 'Dungeon-themed 16×16 pixel-art tileset pack.' },
-    long: { id: 'Lebih dari 400 tile dungeon 16×16 lengkap dengan animasi obor, pintu, dan jebakan.', en: 'Over 400 dungeon tiles at 16×16, including animated torches, doors, and traps.' },
-    video: '', links: [{ l: { id: 'Dapatkan di Itch.io', en: 'Get it on Itch.io' }, u: 'https://itch.io/', i: 'itchdotio' }] },
-  { title: 'Fantasy UI Kit', cat: 'asset', img: 'https://placehold.co/640x360/2a2545/5eead4?text=Fantasy+UI',
-    desc: { id: 'Elemen UI bertema fantasi: tombol, panel, ikon.', en: 'Fantasy-themed UI elements: buttons, panels, icons.' },
-    long: { id: 'UI kit berisi tombol, panel, bar kesehatan, dan 120 ikon item bergaya fantasi.', en: 'A UI kit with buttons, panels, health bars, and 120 fantasy-style item icons.' },
-    video: '', links: [{ l: { id: 'Dapatkan di Itch.io', en: 'Get it on Itch.io' }, u: 'https://itch.io/', i: 'itchdotio' }] }
+  { title: 'QuestManager', cat: 'asset', img: 'assets/questmanager.png',
+    desc: { id: 'Quest log, tracker & compass untuk RPG Maker MZ.', en: 'Quest log, tracker & compass for RPG Maker MZ.' },
+    long: { id: 'Sistem quest tanpa coding: quest bunuh dan kumpulkan item berjalan otomatis lewat tag, dilengkapi tracker di layar, compass penunjuk objektif, rantai quest, dan notifikasi popup. Gratis untuk proyek komersial maupun non-komersial, cukup beri kredit "Hitotobi Games".',
+            en: 'A no-code quest system: kill and collect quests progress automatically via tags, with an on-screen tracker, objective compass, quest chains, and popup notifications. Free for commercial and non-commercial projects; just credit "Hitotobi Games".' },
+    video: '', links: [{ l: { id: 'Lihat di Itch.io', en: 'View on Itch.io' }, u: 'https://hitotobi-games.itch.io/sgp-questmanager-quest-log-tracker-compass-for-rpg-maker-mz/', i: 'itchdotio' }] },
+  { title: 'Forest Camp Map', cat: 'asset', img: 'assets/forest-camp-map.png',
+    desc: { id: 'Map perkemahan hutan bergaya pixel art.', en: 'Pixel-art forest camp map.' },
+    long: { id: 'Map perkemahan di tengah hutan dengan beberapa rumah kecil, siap dipakai di game RPG-mu.',
+            en: 'A forest camp map with a few small houses, ready to use in your RPG game.' },
+    video: '', links: [{ l: { id: 'Lihat di Itch.io', en: 'View on Itch.io' }, u: 'https://hitotobi-games.itch.io/forest-camp/', i: 'itchdotio' }] },
+  { title: 'House Map Interior Pack', cat: 'asset', img: 'assets/house-map-interior.png',
+    desc: { id: 'Paket map interior 3 rumah: kamar, dapur, ruang tamu, dan lainnya.', en: 'Interior map pack for 3 houses: bedrooms, kitchen, living room, and more.' },
+    long: { id: 'Tiga tipe interior rumah dengan kamar tidur, ruang tamu, dapur, dan ruang makan, plus toilet dan kamar mandi di rumah ke-2. Boleh dipakai komersial maupun non-komersial; beri kredit jika dipakai komersial.',
+            en: 'Three house interiors with bedrooms, living room, kitchen, and dining room, plus a toilet and bathroom in house 2. Free for commercial and non-commercial use; credit required for commercial use.' },
+    video: '', links: [{ l: { id: 'Lihat di Itch.io', en: 'View on Itch.io' }, u: 'https://hitotobi-games.itch.io/house-map-interior-pack/', i: 'itchdotio' }] }
 ];
