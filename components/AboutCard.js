@@ -1,17 +1,19 @@
 'use client';
 import ProfileCard from './ProfileCard';
 import { useTheme } from './ThemeProvider';
+import { useLang } from './LangProvider';
 import { CONFIG, asset } from '../data/site';
 
 export default function AboutCard() {
   const { theme } = useTheme();
+  const { lang } = useLang();
   return (
     <ProfileCard
       name={CONFIG.founder}
       title={CONFIG.role}
       handle={CONFIG.handle}
-      status="Aktif"
-      contactText="Hubungi"
+      status={lang === 'en' ? 'Active' : 'Aktif'}
+      contactText={lang === 'en' ? 'Contact' : 'Hubungi'}
       avatarUrl={asset(CONFIG.photo)}
       miniAvatarUrl={asset(CONFIG.logo)}
       theme={theme}
