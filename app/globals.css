@@ -98,3 +98,6 @@ html:not([data-lang="en"]) .lg-id,html[data-lang="en"] .lg-en{background:var(--a
 .menu-item:hover{background:color-mix(in srgb,var(--accent) 14%,transparent);color:var(--accent)}
 .menu-item:hover::after{transform:translateX(3px);opacity:1}
 @media (prefers-reduced-motion:reduce){.menu-panel,.menu-item,.burger i{transition:none!important}}
+
+/* Kotak pengganti thumbnail */
+.thumb-ph{aspect-ratio:16/9;width:100%;display:grid;place-items:center;text-align:center;padding:1rem;font-family:var(--font-head),sans-serif;font-weight:800;font-size:1.25rem;background:linear-gradient(135deg,var(--accent2),var(--accent));color:var(--onaccent)}
