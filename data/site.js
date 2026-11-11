@@ -50,9 +50,9 @@ export const CONFIG = {
     },
     // progress = 0 sampai 100. title (opsional) = nama chapter dua bahasa.
     chapters: [
-      { name: 'Chapter 1', progress: 100 },
-      { name: 'Chapter 2', progress: 80 },
-      { name: 'Chapter 3', progress: 20 },
+      { name: 'Chapter 1', progress: 40 },
+      { name: 'Chapter 2', progress: 0 },
+      { name: 'Chapter 3', progress: 0 },
       { name: 'Chapter 4', progress: 0 },
       { name: 'Chapter 5', progress: 0 }
     ],
@@ -72,7 +72,7 @@ export const CONFIG = {
 // Ikon sendiri: ['img', 'assets/namafile.png', 'Nama']  (taruh di public/assets/)
 // mono = 1 untuk ikon berwarna hitam (otomatis dibalik di mode gelap)
 export const STACK1 = [
-  ['img', 'assets/RPG Maker.jpg', 'RPG Maker MZ'],
+  ['img', 'assets/RPG Maker.jpg', 'RPG Maker'],
   ['javascript', 'javascript-original', 'JavaScript']
 ];
 export const STACK2 = [
