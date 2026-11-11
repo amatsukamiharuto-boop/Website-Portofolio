@@ -26,6 +26,7 @@ export const UI = {
   projectsTitle: { id: 'Proyek', en: 'Projects' },
   projectsSub: { id: 'Pilih kategori, lalu klik kartu untuk melihat detailnya.', en: 'Pick a category, then click a card to see the details.' },
   all: { id: 'Semua', en: 'All' },
+  itchAll: { id: 'Lihat semua di Itch.io', en: 'See all on Itch.io' },
 
   waTitle: { id: 'Chat lewat WhatsApp', en: 'Chat on WhatsApp' },
   waDesc: { id: 'Jalur tercepat untuk diskusi proyek, kolaborasi, atau pertanyaan singkat.', en: 'The fastest way to discuss projects, collaborations, or quick questions.' },
