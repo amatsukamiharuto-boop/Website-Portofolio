@@ -3,10 +3,18 @@ import { useEffect, useMemo, useState } from 'react';
 import AOS from 'aos';
 import Icon from './Icon';
 import L from './L';
-import { PROJECTS } from '../data/site';
+import { CONFIG, PROJECTS, asset } from '../data/site';
 import { CATS } from '../data/i18n';
 
+// Gambar thumbnail; jika file belum ada/gagal dimuat, tampil kotak berwarna berisi judul
+function Thumb({ src, title, className = '', ...rest }) {
+  const [bad, setBad] = useState(false);
+  if (bad || !src) return <div className={`thumb-ph ${className}`} role="img" aria-label={title}>{title}</div>;
+  return <img src={asset(src)} alt={`Thumbnail ${title}`} className={className} onError={() => setBad(true)} {...rest} />;
+}
+
 export default function Projects() {
+  const itchUrl = CONFIG.socials.find(s => s.slug === 'itchdotio')?.url;
   const cats = useMemo(() => ['all', ...new Set(PROJECTS.map(p => p.cat))], []);
   const [cat, setCat] = useState('all');
   const [sel, setSel] = useState(null);
@@ -32,17 +40,19 @@ export default function Projects() {
       <h2 className="text-2xl sm:text-3xl font-extrabold" data-aos="fade-up"><L k="projectsTitle" /></h2>
       <p className="muted mt-2" data-aos="fade-up" data-aos-delay="100"><L k="projectsSub" /></p>
 
-      <div role="tablist" className="flex flex-wrap gap-2 mt-6" data-aos="fade-up" data-aos-delay="150">
-        {cats.map(c => (
-          <button key={c} role="tab" className="tab" aria-selected={c === cat} onClick={() => setCat(c)}><L t={label(c)} /></button>
-        ))}
-      </div>
+      {cats.length > 2 && (
+        <div role="tablist" className="flex flex-wrap gap-2 mt-6" data-aos="fade-up" data-aos-delay="150">
+          {cats.map(c => (
+            <button key={c} role="tab" className="tab" aria-selected={c === cat} onClick={() => setCat(c)}><L t={label(c)} /></button>
+          ))}
+        </div>
+      )}
 
       <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 mt-8">
         {list.map((p, n) => (
           <div key={p.title} className="h-full" data-aos="fade-up" data-aos-delay={(n % 3) * 100}>
             <button className="card surface" aria-label={p.title} onClick={() => setSel(p)}>
-              <img src={p.img} alt={`Thumbnail ${p.title}`} loading="lazy" width="640" height="360" />
+              <Thumb src={p.img} title={p.title} loading="lazy" width="640" height="360" />
               <div className="p-5">
                 <span className="tag"><L t={label(p.cat)} /></span>
                 <h3 className="text-lg font-extrabold mt-2">{p.title}</h3>
@@ -53,6 +63,12 @@ export default function Projects() {
         ))}
       </div>
 
+      {itchUrl && (
+        <div className="mt-8 flex justify-center" data-aos="fade-up">
+          <a className="btn btn-ghost" href={itchUrl} target="_blank" rel="noopener noreferrer"><Icon slug="itchdotio" /><L k="itchAll" /></a>
+        </div>
+      )}
+
       {sel && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4" style={{ background: 'rgba(8,6,18,.7)' }}
           role="dialog" aria-modal="true" aria-labelledby="mTitle" onClick={e => { if (e.target === e.currentTarget) setSel(null); }}>
@@ -60,7 +76,7 @@ export default function Projects() {
             <div className="aspect-video w-full" style={{ background: 'var(--line)' }}>
               {sel.video
                 ? <iframe className="w-full h-full" src={sel.video} title={`Video ${sel.title}`} allow="encrypted-media; picture-in-picture" allowFullScreen />
-                : <img className="w-full h-full object-cover" src={sel.img} alt={`Cuplikan ${sel.title}`} />}
+                : <Thumb src={sel.img} title={sel.title} className="w-full h-full object-cover" />}
             </div>
             <div className="p-6">
               <div className="flex items-start justify-between gap-4">
