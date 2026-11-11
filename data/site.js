@@ -56,9 +56,9 @@ export const CONFIG = {
     },
     // progress = 0 sampai 100. title (opsional) = nama chapter dua bahasa.
     chapters: [
-      { name: 'Chapter 1', progress: 100 },
-      { name: 'Chapter 2', progress: 80 },
-      { name: 'Chapter 3', progress: 20 },
+      { name: 'Chapter 1', progress: 40 },
+      { name: 'Chapter 2', progress: 0 },
+      { name: 'Chapter 3', progress: 0 },
       { name: 'Chapter 4', progress: 0 },
       { name: 'Chapter 5', progress: 0 }
     ],
