@@ -1,0 +1,5 @@
+Taruh semua gambar di folder ini (public/assets):
+- profile.jpg              (foto kartu About)
+- Hitotobi_Games_logo.png  (logo)
+- RPG Maker.jpg            (ikon tech stack)
+Setelah gambar terunggah, file .txt ini boleh dihapus.
