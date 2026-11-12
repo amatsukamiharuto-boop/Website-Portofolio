@@ -27,6 +27,7 @@ export const UI = {
   projectsSub: { id: 'Pilih kategori, lalu klik kartu untuk melihat detailnya.', en: 'Pick a category, then click a card to see the details.' },
   all: { id: 'Semua', en: 'All' },
   itchAll: { id: 'Lihat semua di Itch.io', en: 'See all on Itch.io' },
+  empty: { id: 'Belum ada proyek di kategori ini. Segera hadir!', en: 'No projects in this category yet. Coming soon!' },
 
   waTitle: { id: 'Chat lewat WhatsApp', en: 'Chat on WhatsApp' },
   waDesc: { id: 'Jalur tercepat untuk diskusi proyek, kolaborasi, atau pertanyaan singkat.', en: 'The fastest way to discuss projects, collaborations, or quick questions.' },
@@ -41,9 +42,9 @@ export const UI = {
   fSent: { id: 'Aplikasi email Anda akan terbuka untuk mengirim pesan.', en: 'Your email app will open so you can send the message.' }
 };
 
-// Label kategori proyek (kunci dipakai di data/site.js)
+// Label kategori proyek. Urutan di sini = urutan tab. Semua kategori selalu tampil, walau masih kosong.
 export const CATS = {
   game: { id: 'Game Development', en: 'Game Development' },
-  tools: { id: 'Tools & Software', en: 'Tools & Software' },
-  asset: { id: 'Asset Development', en: 'Asset Development' }
+  asset: { id: 'Asset Development', en: 'Asset Development' },
+  app: { id: 'App/Software Development', en: 'App/Software Development' }
 };
