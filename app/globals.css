@@ -101,3 +101,6 @@ html:not([data-lang="en"]) .lg-id,html[data-lang="en"] .lg-en{background:var(--a
 
 /* Kotak pengganti thumbnail */
 .thumb-ph{aspect-ratio:16/9;width:100%;display:grid;place-items:center;text-align:center;padding:1rem;font-family:var(--font-head),sans-serif;font-weight:800;font-size:1.25rem;background:linear-gradient(135deg,var(--accent2),var(--accent));color:var(--onaccent)}
+
+/* Kategori proyek yang masih kosong */
+.empty-box{margin-top:2rem;padding:2.5rem 1.5rem;text-align:center;border:1px dashed var(--line);border-radius:1rem;color:var(--muted)}
