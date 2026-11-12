@@ -56,9 +56,9 @@ export const CONFIG = {
     },
     // progress = 0 sampai 100. title (opsional) = nama chapter dua bahasa.
     chapters: [
-      { name: 'Chapter 1', progress: 40 },
-      { name: 'Chapter 2', progress: 0 },
-      { name: 'Chapter 3', progress: 0 },
+      { name: 'Chapter 1', progress: 100 },
+      { name: 'Chapter 2', progress: 80 },
+      { name: 'Chapter 3', progress: 20 },
       { name: 'Chapter 4', progress: 0 },
       { name: 'Chapter 5', progress: 0 }
     ],
@@ -90,8 +90,8 @@ export const STACK2 = [
   ['github', 'github-original', 'GitHub', 1]
 ];
 
-// cat = kunci kategori: 'game' | 'tools' | 'asset'  (label ada di data/i18n.js -> CATS)
-//   Tab filter hanya muncul kalau ada lebih dari satu kategori.
+// cat = kunci kategori: 'game' | 'asset' | 'app'  (label ada di data/i18n.js -> CATS)
+//   Semua kategori selalu tampil sebagai tab; yang belum ada proyeknya menampilkan "Segera hadir".
 // img = gambar thumbnail di public/assets/ (ditulis 'assets/namafile.png'). Jika belum ada, tampil kotak berwarna.
 // video = URL embed YouTube, kosongkan jika tidak ada. links[].i = slug ikon (opsional)
 // TODO: ganti `u` dengan alamat halaman tiap game, contoh: https://hitotobi-games.itch.io/nama-game
@@ -100,15 +100,15 @@ export const PROJECTS = [
     desc: { id: 'Quest log, tracker & compass untuk RPG Maker MZ.', en: 'Quest log, tracker & compass for RPG Maker MZ.' },
     long: { id: 'Sistem quest tanpa coding: quest bunuh dan kumpulkan item berjalan otomatis lewat tag, dilengkapi tracker di layar, compass penunjuk objektif, rantai quest, dan notifikasi popup. Gratis untuk proyek komersial maupun non-komersial, cukup beri kredit "Hitotobi Games".',
             en: 'A no-code quest system: kill and collect quests progress automatically via tags, with an on-screen tracker, objective compass, quest chains, and popup notifications. Free for commercial and non-commercial projects; just credit "Hitotobi Games".' },
-    video: '', links: [{ l: { id: 'Lihat di Itch.io', en: 'View on Itch.io' }, u: 'https://hitotobi-games.itch.io/sgp-questmanager-quest-log-tracker-compass-for-rpg-maker-mz/', i: 'itchdotio' }] },
+    video: '', links: [{ l: { id: 'Lihat di Itch.io', en: 'View on Itch.io' }, u: 'https://hitotobi-games.itch.io/', i: 'itchdotio' }] },
   { title: 'Forest Camp Map', cat: 'asset', img: 'assets/forest-camp-map.png',
     desc: { id: 'Map perkemahan hutan bergaya pixel art.', en: 'Pixel-art forest camp map.' },
     long: { id: 'Map perkemahan di tengah hutan dengan beberapa rumah kecil, siap dipakai di game RPG-mu.',
             en: 'A forest camp map with a few small houses, ready to use in your RPG game.' },
-    video: '', links: [{ l: { id: 'Lihat di Itch.io', en: 'View on Itch.io' }, u: 'https://hitotobi-games.itch.io/forest-camp/', i: 'itchdotio' }] },
+    video: '', links: [{ l: { id: 'Lihat di Itch.io', en: 'View on Itch.io' }, u: 'https://hitotobi-games.itch.io/', i: 'itchdotio' }] },
   { title: 'House Map Interior Pack', cat: 'asset', img: 'assets/house-map-interior.png',
     desc: { id: 'Paket map interior 3 rumah: kamar, dapur, ruang tamu, dan lainnya.', en: 'Interior map pack for 3 houses: bedrooms, kitchen, living room, and more.' },
     long: { id: 'Tiga tipe interior rumah dengan kamar tidur, ruang tamu, dapur, dan ruang makan, plus toilet dan kamar mandi di rumah ke-2. Boleh dipakai komersial maupun non-komersial; beri kredit jika dipakai komersial.',
             en: 'Three house interiors with bedrooms, living room, kitchen, and dining room, plus a toilet and bathroom in house 2. Free for commercial and non-commercial use; credit required for commercial use.' },
-    video: '', links: [{ l: { id: 'Lihat di Itch.io', en: 'View on Itch.io' }, u: 'https://hitotobi-games.itch.io/house-map-interior-pack/', i: 'itchdotio' }] }
+    video: '', links: [{ l: { id: 'Lihat di Itch.io', en: 'View on Itch.io' }, u: 'https://hitotobi-games.itch.io/', i: 'itchdotio' }] }
 ];
