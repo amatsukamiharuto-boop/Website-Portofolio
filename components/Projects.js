@@ -15,7 +15,7 @@ function Thumb({ src, title, className = '', ...rest }) {
 
 export default function Projects() {
   const itchUrl = CONFIG.socials.find(s => s.slug === 'itchdotio')?.url;
-  const cats = useMemo(() => ['all', ...new Set(PROJECTS.map(p => p.cat))], []);
+  const cats = useMemo(() => ['all', ...Object.keys(CATS)], []);
   const [cat, setCat] = useState('all');
   const [sel, setSel] = useState(null);
   const list = PROJECTS.filter(p => cat === 'all' || p.cat === cat);
@@ -40,12 +40,14 @@ export default function Projects() {
       <h2 className="text-2xl sm:text-3xl font-extrabold" data-aos="fade-up"><L k="projectsTitle" /></h2>
       <p className="muted mt-2" data-aos="fade-up" data-aos-delay="100"><L k="projectsSub" /></p>
 
-      {cats.length > 2 && (
-        <div role="tablist" className="flex flex-wrap gap-2 mt-6" data-aos="fade-up" data-aos-delay="150">
-          {cats.map(c => (
-            <button key={c} role="tab" className="tab" aria-selected={c === cat} onClick={() => setCat(c)}><L t={label(c)} /></button>
-          ))}
-        </div>
+      <div role="tablist" className="flex flex-wrap gap-2 mt-6" data-aos="fade-up" data-aos-delay="150">
+        {cats.map(c => (
+          <button key={c} role="tab" className="tab" aria-selected={c === cat} onClick={() => setCat(c)}><L t={label(c)} /></button>
+        ))}
+      </div>
+
+      {list.length === 0 && (
+        <div className="empty-box" data-aos="fade-up"><L k="empty" /></div>
       )}
 
       <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 mt-8">
