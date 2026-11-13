@@ -108,7 +108,7 @@ export default function Intro() {
           <div className="term">
             <div className="term-bar"><i /><i /><i /><span>build --portfolio</span></div>
             <div className="term-body">
-              <p className="dim">$ npm run build</p>
+              <p className="dim">Load to open the websites</p>
               {STEPS.map((s, i) => {
                 if (i > p.idx) return null;
                 const done = i < p.idx;
