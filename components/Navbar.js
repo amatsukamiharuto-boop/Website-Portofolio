@@ -7,6 +7,7 @@ import { CONFIG } from '../data/site';
 
 const LINKS = [
   ['#tentang', 'navAbout'],
+  ['#experience', 'navExperience'],
   ['#status', 'navStatus'],
   ['#stack', 'navStack'],
   ['#projects', 'navProjects'],
