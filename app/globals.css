@@ -147,3 +147,11 @@ html[data-intro="pending"],html[data-intro="pending"] body{overflow:hidden}
 .intro-welcome{font-size:clamp(2.2rem,9vw,5rem);font-weight:700;letter-spacing:.2em;text-shadow:0 0 24px rgba(46,230,200,.7);animation:welcomeAnim 2.5s ease both}
 @keyframes welcomeAnim{0%{opacity:0;letter-spacing:.6em;filter:blur(8px)}30%{opacity:1;letter-spacing:.2em;filter:blur(0)}72%{opacity:1}100%{opacity:0;transform:scale(1.04)}}
 @media (prefers-reduced-motion:reduce){.timeline::before,.tl-dot,.tl-card{transition:none!important}.tl-dot.now{animation:none}}
+
+/* ===== Chapter terkunci (0%) ===== */
+.chapter.locked{position:relative;overflow:hidden}
+.locked-blur{filter:blur(6px);opacity:.5;user-select:none;pointer-events:none}
+.lock-overlay{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;gap:.5rem;font-size:.75rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.chapter.locked:hover .lock-overlay svg{animation:wiggle .5s ease}
+@keyframes wiggle{0%,100%{transform:rotate(0)}25%{transform:rotate(-14deg)}50%{transform:rotate(12deg)}75%{transform:rotate(-8deg)}}
+@media (prefers-reduced-motion:reduce){.chapter.locked:hover .lock-overlay svg{animation:none}}
