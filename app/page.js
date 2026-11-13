@@ -1,6 +1,7 @@
 import Navbar from '../components/Navbar';
 import Hero from '../components/Hero';
 import About from '../components/About';
+import Experience from '../components/Experience';
 import Status from '../components/Status';
 import TechStack from '../components/TechStack';
 import Projects from '../components/Projects';
@@ -15,6 +16,7 @@ export default function Page() {
       <main>
         <Hero />
         <About />
+        <Experience />
         <Status />
         <TechStack />
         <Projects />
