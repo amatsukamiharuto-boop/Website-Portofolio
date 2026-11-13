@@ -56,9 +56,9 @@ export const CONFIG = {
     },
     // progress = 0 sampai 100. title (opsional) = nama chapter dua bahasa.
     chapters: [
-      { name: 'Chapter 1', progress: 100 },
-      { name: 'Chapter 2', progress: 80 },
-      { name: 'Chapter 3', progress: 20 },
+      { name: 'Chapter 1', progress: 40 },
+      { name: 'Chapter 2', progress: 0 },
+      { name: 'Chapter 3', progress: 0 },
       { name: 'Chapter 4', progress: 0 },
       { name: 'Chapter 5', progress: 0 }
     ],
@@ -111,4 +111,29 @@ export const PROJECTS = [
     long: { id: 'Tiga tipe interior rumah dengan kamar tidur, ruang tamu, dapur, dan ruang makan, plus toilet dan kamar mandi di rumah ke-2. Boleh dipakai komersial maupun non-komersial; beri kredit jika dipakai komersial.',
             en: 'Three house interiors with bedrooms, living room, kitchen, and dining room, plus a toilet and bathroom in house 2. Free for commercial and non-commercial use; credit required for commercial use.' },
     video: '', links: [{ l: { id: 'Lihat di Itch.io', en: 'View on Itch.io' }, u: 'https://hitotobi-games.itch.io/', i: 'itchdotio' }] }
+];
+
+// ---------- ANIMASI PEMBUKA (terminal / hacker) ----------
+// enabled: false -> matikan animasi pembuka.
+// oncePerSession: true -> hanya tampil sekali per tab/sesi browser (refresh tidak mengulang).
+export const INTRO = { enabled: true, oncePerSession: false };
+
+// ---------- EXPERIENCE ----------
+// role, desc = teks dua bahasa. org = nama studio/tempat. period (opsional) = periode, contoh:
+//   period: { id: '2024 – Sekarang', en: '2024 – Present' }
+// points (opsional) = daftar poin pencapaian: [{ id: '...', en: '...' }]
+// current: true -> titik berdenyut (peran yang sedang dijalani). Urutan: terbaru di atas.
+export const EXPERIENCE = [
+  { role: { id: 'Founder & Developer', en: 'Founder & Developer' }, org: 'Hitotobi Games',
+    period: { id: 'Sekarang', en: 'Present' }, current: true,
+    desc: { id: 'Memimpin studio indie dan mengembangkan game RPG fantasi romantis "Three Word Left Unsaid" dengan RPG Maker MZ.',
+            en: 'Leading an indie studio and developing the romantic fantasy RPG "Three Word Left Unsaid" with RPG Maker MZ.' },
+    tags: ['RPG Maker MZ', 'JavaScript'] },
+  { role: { id: 'Asset Developer', en: 'Asset Developer' }, org: 'Itch.io · hitotobi-games',
+    desc: { id: 'Merilis aset game untuk developer lain: plugin QuestManager, Forest Camp Map, dan House Map Interior Pack.',
+            en: 'Releasing game assets for other developers: the QuestManager plugin, Forest Camp Map, and House Map Interior Pack.' },
+    tags: ['Plugin', 'Map Assets'] },
+  { role: { id: 'App Developer', en: 'App Developer' }, org: 'Hitotobi Games',
+    desc: { id: 'Membangun aplikasi Android dan lintas platform.', en: 'Building Android and cross-platform apps.' },
+    tags: ['Flutter', 'Dart', 'Kotlin'] }
 ];
