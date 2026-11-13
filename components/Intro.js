@@ -5,8 +5,8 @@ import { CONFIG } from '../data/site';
 
 // Daftar "modul" yang seolah-olah sedang dibangun
 const STEPS = [
-  'Initializing core', 'Loading Navbar', 'Loading About Me', 'Loading Experience', 'Loading Status',
-  'Loading Tech Stack', 'Loading Projects', 'Loading Contact', 'Building styles'
+  'Initializing websites', 'Loading Navbar', 'Loading About Me', 'Loading Experience', 'Loading Status',
+  'Loading Tech Stack', 'Loading Projects', 'Loading Contact', 'Loading Animation, Loading Websites'
 ];
 const SPIN = '|/-\\';
 const BAR = 24;
