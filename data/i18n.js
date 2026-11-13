@@ -30,6 +30,7 @@ export const UI = {
   stDone: { id: 'Selesai', en: 'Done' },
   stDoing: { id: 'Dikerjakan', en: 'In progress' },
   stTodo: { id: 'Belum dimulai', en: 'Not started' },
+  stLocked: { id: 'Terkunci', en: 'Locked' },
 
   projectsTitle: { id: 'Proyek', en: 'Projects' },
   projectsSub: { id: 'Pilih kategori, lalu klik kartu untuk melihat detailnya.', en: 'Pick a category, then click a card to see the details.' },
