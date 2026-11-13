@@ -6,6 +6,7 @@ export const UI = {
   navStack: { id: 'Tech Stack', en: 'Tech Stack' },
   navProjects: { id: 'Proyek', en: 'Projects' },
   navWhatsapp: { id: 'WhatsApp', en: 'WhatsApp' },
+  navExperience: { id: 'Pengalaman', en: 'Experience' },
   navEmail: { id: 'Email', en: 'Email' },
 
   heroTitle: { id: 'Membangun game, tools, dan aset yang benar-benar dipakai.', en: 'Building games, tools, and assets people actually use.' },
@@ -14,6 +15,13 @@ export const UI = {
 
   aboutTitle: { id: 'Tentang Saya', en: 'About Me' },
   hello: { id: 'Halo, saya', en: "Hi, I'm" },
+
+  expTitle: { id: 'Pengalaman', en: 'Experience' },
+  expSub: { id: 'Perjalanan saya sebagai developer.', en: 'My journey as a developer.' },
+
+  introEnter: { id: 'MASUK', en: 'ENTER' },
+  introSkip: { id: 'LEWATI', en: 'SKIP' },
+  introHint: { id: 'Tekan Enter atau klik MASUK untuk melanjutkan', en: 'Press Enter or click ENTER to continue' },
 
   nowLabel: { id: 'Sedang dikerjakan', en: 'Now working on' },
   active: { id: 'Aktif', en: 'Active' },
