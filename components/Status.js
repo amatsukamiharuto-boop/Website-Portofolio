@@ -1,8 +1,7 @@
 import L from './L';
 import { CONFIG } from '../data/site';
 
-const stateOf = p => (p >= 100 ? 'done' : p > 0 ? 'doing' : 'todo');
-const LABEL = { done: 'stDone', doing: 'stDoing', todo: 'stTodo' };
+const LABEL = { done: 'stDone', doing: 'stDoing' };
 
 export default function Status() {
   const nw = CONFIG.nowWorking;
@@ -27,11 +26,30 @@ export default function Status() {
         </div>
         <div className="quest-bar"><div className="quest-fill" style={{ '--w': `${overall}%` }} /></div>
 
-        {/* Progres per chapter */}
+        {/* Progres per chapter. Chapter 0% = terkunci (digembok dan diburamkan) */}
         {ch.length > 0 && (
           <ul className="grid gap-3 mt-6">
             {ch.map((c, i) => {
-              const s = stateOf(c.progress);
+              if (c.progress <= 0) {
+                return (
+                  <li key={c.name} className="chapter locked">
+                    <div className="locked-blur" aria-hidden="true">
+                      <div className="flex items-center justify-between gap-3 mb-2">
+                        <span className="font-semibold text-sm">{c.name}</span>
+                        <span className="text-sm font-semibold">0%</span>
+                      </div>
+                      <div className="quest-bar"><div className="quest-fill" style={{ '--w': '0%' }} /></div>
+                    </div>
+                    <div className="lock-overlay">
+                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                        <rect x="4" y="11" width="16" height="10" rx="2.5" /><path d="M8 11V8a4 4 0 0 1 8 0v3" />
+                      </svg>
+                      <span><L k="stLocked" /></span>
+                    </div>
+                  </li>
+                );
+              }
+              const s = c.progress >= 100 ? 'done' : 'doing';
               return (
                 <li key={c.name} className="chapter">
                   <div className="flex items-center justify-between gap-3 mb-2">
