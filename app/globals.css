@@ -104,3 +104,46 @@ html:not([data-lang="en"]) .lg-id,html[data-lang="en"] .lg-en{background:var(--a
 
 /* Kategori proyek yang masih kosong */
 .empty-box{margin-top:2rem;padding:2.5rem 1.5rem;text-align:center;border:1px dashed var(--line);border-radius:1rem;color:var(--muted)}
+
+/* ===== Experience (timeline) ===== */
+.timeline{position:relative;list-style:none;margin:2.5rem 0 0 .5rem;padding:0 0 0 2.25rem}
+.timeline::before{content:'';position:absolute;left:.5rem;top:.4rem;bottom:.4rem;width:2px;border-radius:2px;background:linear-gradient(var(--accent2),var(--accent));transform-origin:top;transition:transform 1.8s cubic-bezier(.2,.8,.2,1)}
+html.aos-ready .timeline[data-aos]:not(.aos-animate)::before{transform:scaleY(0)} /* garis "tergambar" saat terlihat */
+.tl-item{position:relative;margin-bottom:1.5rem}
+.tl-item:last-child{margin-bottom:0}
+.tl-dot{position:absolute;left:-2.25rem;top:1.4rem;width:1.1rem;height:1.1rem;border-radius:50%;background:var(--bg);border:3px solid var(--accent);box-shadow:0 0 0 4px var(--bg);transition:transform .25s}
+.tl-dot.now{background:var(--accent);animation:ringpulse 2s infinite}
+@keyframes ringpulse{0%{box-shadow:0 0 0 0 color-mix(in srgb,var(--accent) 55%,transparent)}70%,100%{box-shadow:0 0 0 10px transparent}}
+.tl-item:hover .tl-dot{transform:scale(1.2)}
+.tl-card{padding:1.25rem 1.4rem;border-radius:1rem;border:1px solid var(--line);background:var(--surface);transition:transform .25s,border-color .25s,box-shadow .25s}
+.tl-item:hover .tl-card{transform:translateY(-3px);border-color:var(--accent);box-shadow:0 18px 40px -24px color-mix(in srgb,var(--accent) 60%,transparent)}
+.tl-points{margin-top:.6rem;padding-left:1.1rem;list-style:disc;font-size:.875rem;color:var(--muted)}
+
+/* ===== Animasi pembuka (terminal) ===== */
+.intro{position:fixed;inset:0;z-index:100;display:none;align-items:center;justify-content:center;background:#05070a;color:#2ee6c8;
+  font-family:ui-monospace,SFMono-Regular,'Cascadia Code',Consolas,Menlo,monospace;transition:opacity .7s ease}
+html[data-intro="pending"] .intro,html[data-intro="exit"] .intro{display:flex}
+html[data-intro="exit"] .intro{opacity:0;pointer-events:none}
+html[data-intro="pending"],html[data-intro="pending"] body{overflow:hidden}
+.intro::after{content:'';position:absolute;inset:0;pointer-events:none;background:repeating-linear-gradient(0deg,rgba(255,255,255,.03) 0 1px,transparent 1px 3px)}
+.term{width:min(640px,calc(100vw - 2rem));border:1px solid rgba(46,230,200,.35);border-radius:.75rem;background:rgba(8,12,14,.92);box-shadow:0 0 50px rgba(46,230,200,.12);overflow:hidden}
+.term-bar{display:flex;align-items:center;gap:.4rem;padding:.6rem .9rem;border-bottom:1px solid rgba(46,230,200,.2);font-size:.75rem;color:rgba(46,230,200,.7)}
+.term-bar i{width:.6rem;height:.6rem;border-radius:50%;background:rgba(46,230,200,.35)}
+.term-bar span{margin-left:.5rem}
+.term-body{padding:1.1rem 1.25rem 1.4rem;font-size:clamp(.72rem,2.7vw,.92rem);line-height:1.75;text-shadow:0 0 8px rgba(46,230,200,.4)}
+.term-body p{white-space:pre-wrap;word-break:break-word}
+.term-body .ln-row{white-space:pre;overflow:hidden}
+.term-body .dim{color:rgba(46,230,200,.6)}
+.term-body .ok{color:#6dff9c}
+.term-body .bar{margin-top:.75rem;color:#2ee6c8}
+.ln{opacity:0;animation:lnIn .4s ease forwards;animation-delay:calc(var(--n) * .3s)}
+@keyframes lnIn{from{opacity:0;transform:translateX(-6px)}to{opacity:1;transform:none}}
+.blink{animation:blink 1s steps(2,start) infinite}
+@keyframes blink{to{visibility:hidden}}
+.intro-btn{margin-top:1rem;padding:.6rem 1.2rem;border:1px solid currentColor;border-radius:.4rem;color:#2ee6c8;background:transparent;font:inherit;letter-spacing:.15em;cursor:pointer;transition:background .2s,color .2s,box-shadow .2s}
+.intro-btn:hover{background:#2ee6c8;color:#05070a;box-shadow:0 0 24px rgba(46,230,200,.5)}
+.intro-skip{position:absolute;top:1rem;right:1.25rem;z-index:1;font:inherit;font-size:.75rem;letter-spacing:.15em;color:rgba(46,230,200,.7);cursor:pointer;background:transparent}
+.intro-skip:hover{color:#2ee6c8}
+.intro-welcome{font-size:clamp(2.2rem,9vw,5rem);font-weight:700;letter-spacing:.2em;text-shadow:0 0 24px rgba(46,230,200,.7);animation:welcomeAnim 2.5s ease both}
+@keyframes welcomeAnim{0%{opacity:0;letter-spacing:.6em;filter:blur(8px)}30%{opacity:1;letter-spacing:.2em;filter:blur(0)}72%{opacity:1}100%{opacity:0;transform:scale(1.04)}}
+@media (prefers-reduced-motion:reduce){.timeline::before,.tl-dot,.tl-card{transition:none!important}.tl-dot.now{animation:none}}
