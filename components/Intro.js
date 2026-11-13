@@ -119,7 +119,7 @@ export default function Intro() {
                 );
               })}
               <p className="ln-row bar">[{'█'.repeat(filled)}{'░'.repeat(BAR - filled)}] {pad(p.overall)}%</p>
-              {finished && <p className="ok">Build complete. Launching<span className="blink">_</span></p>}
+              {finished && <p className="ok">Build complete. Open the Websites<span className="blink">_</span></p>}
             </div>
           </div>
         </>
