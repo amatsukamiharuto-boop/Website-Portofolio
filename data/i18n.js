@@ -18,6 +18,17 @@ export const UI = {
 
   expTitle: { id: 'Pengalaman', en: 'Experience' },
   expSub: { id: 'Perjalanan saya sebagai developer.', en: 'My journey as a developer.' },
+  expSince: { id: 'Berjalan sejak', en: 'Running since' },
+  expUnit: { id: 'bulan', en: 'months' },
+  expUnit1: { id: 'bulan', en: 'month' },
+  expSumDesc: { id: 'Membangun game, aset, dan aplikasi sebagai developer indie.', en: 'Building games, assets, and apps as an indie developer.' },
+  expFactDone: { id: 'Proyek selesai', en: 'Projects done' },
+  expFactDoing: { id: 'Dikerjakan', en: 'In progress' },
+  expFactCats: { id: 'Kategori aktif', en: 'Active categories' },
+  expSoon: { id: 'Segera hadir', en: 'Coming soon' },
+  expMapTitle: { id: 'Peta perjalanan', en: 'Journey map' },
+  expMapSub: { id: 'Bulan demi bulan, dari awal sampai sekarang.', en: 'Month by month, from the start until now.' },
+  expRoles: { id: 'Peran', en: 'Roles' },
 
   introEnter: { id: 'MASUK', en: 'ENTER' },
   introSkip: { id: 'LEWATI', en: 'SKIP' },
@@ -30,6 +41,7 @@ export const UI = {
   stDone: { id: 'Selesai', en: 'Done' },
   stDoing: { id: 'Dikerjakan', en: 'In progress' },
   stTodo: { id: 'Belum dimulai', en: 'Not started' },
+  stPlanned: { id: 'Rencana', en: 'Planned' },
   stLocked: { id: 'Terkunci', en: 'Locked' },
 
   projectsTitle: { id: 'Proyek', en: 'Projects' },
@@ -56,4 +68,25 @@ export const CATS = {
   game: { id: 'Game Development', en: 'Game Development' },
   asset: { id: 'Asset Development', en: 'Asset Development' },
   app: { id: 'App/Software Development', en: 'App/Software Development' }
+};
+
+// Sub-kategori per kategori. Dipakai di field `sub` pada PROJECTS dan MILESTONES.
+// Tambah/hapus bebas; urutan di sini = urutan chip.
+export const SUBS = {
+  game: {
+    rpg: { id: 'RPG', en: 'RPG' },
+    prototype: { id: 'Prototipe', en: 'Prototype' },
+    jam: { id: 'Game Jam', en: 'Game Jam' }
+  },
+  asset: {
+    plugin: { id: 'Plugin', en: 'Plugins' },
+    map: { id: 'Map', en: 'Maps' },
+    tileset: { id: 'Tileset', en: 'Tilesets' },
+    audio: { id: 'Audio', en: 'Audio' }
+  },
+  app: {
+    android: { id: 'Android', en: 'Android' },
+    crossplatform: { id: 'Lintas Platform', en: 'Cross-platform' },
+    tool: { id: 'Tools', en: 'Tools' }
+  }
 };
