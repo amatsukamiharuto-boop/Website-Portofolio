@@ -27,7 +27,7 @@ export const dateSpan = (a, b) => {
 };
 
 // Awal perjalanan. Lama pengalaman (misal "5 bulan") dihitung otomatis dari sini sampai hari ini.
-export const EXP_START = '2026-06-15';
+export const EXP_START = '2026-07-01';
 
 // Peta perjalanan. Urutan di file bebas, otomatis diurutkan menurut tanggal.
 // cat: 'game' | 'asset' | 'app' | 'general' (general = penanda umum, tidak masuk hitungan)
