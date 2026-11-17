@@ -1,4 +1,5 @@
 import ContactForm from './ContactForm';
+import Divider from './Divider';
 import Icon from './Icon';
 import L from './L';
 import { CONFIG } from '../data/site';
@@ -17,6 +18,8 @@ export default function Contact() {
           <a className="btn btn-wa justify-center" href={wa} target="_blank" rel="noopener noreferrer"><Icon slug="whatsapp" /><L k="waBtn" /></a>
         </div>
       </section>
+
+      <Divider />
 
       {/* Email */}
       <section id="email" className="max-w-6xl mx-auto px-5 py-8 pb-16 grid lg:grid-cols-2 gap-10">
