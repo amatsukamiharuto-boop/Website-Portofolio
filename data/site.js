@@ -2,6 +2,7 @@
    DATA KONTEN — Edit file ini saja untuk mengganti isi website
    Teks dua bahasa ditulis { id: '...', en: '...' }
    Gambar ada di public/assets/  (ditulis 'assets/namafile.jpg')
+   Data Experience (tanggal, peta perjalanan, peran) ada di data/experience.js
    ========================================================== */
 
 // 'assets/foto.jpg' -> '/assets/foto.jpg' (spasi di nama file otomatis aman)
@@ -92,21 +93,25 @@ export const STACK2 = [
 
 // cat = kunci kategori: 'game' | 'asset' | 'app'  (label ada di data/i18n.js -> CATS)
 //   Semua kategori selalu tampil sebagai tab; yang belum ada proyeknya menampilkan "Segera hadir".
+// sub = sub-kategori di dalam kategori (label ada di data/i18n.js -> SUBS), contoh:
+//   game: 'rpg' | 'prototype' | 'jam'
+//   asset: 'plugin' | 'map' | 'tileset' | 'audio'
+//   app: 'android' | 'crossplatform' | 'tool'
 // img = gambar thumbnail di public/assets/ (ditulis 'assets/namafile.png'). Jika belum ada, tampil kotak berwarna.
 // video = URL embed YouTube, kosongkan jika tidak ada. links[].i = slug ikon (opsional)
 // TODO: ganti `u` dengan alamat halaman tiap game, contoh: https://hitotobi-games.itch.io/nama-game
 export const PROJECTS = [
-  { title: 'QuestManager', cat: 'asset', img: 'assets/questmanager.png',
+  { title: 'QuestManager', cat: 'asset', sub: 'plugin', img: 'assets/questmanager.png',
     desc: { id: 'Quest log, tracker & compass untuk RPG Maker MZ.', en: 'Quest log, tracker & compass for RPG Maker MZ.' },
     long: { id: 'Sistem quest tanpa coding: quest bunuh dan kumpulkan item berjalan otomatis lewat tag, dilengkapi tracker di layar, compass penunjuk objektif, rantai quest, dan notifikasi popup. Gratis untuk proyek komersial maupun non-komersial, cukup beri kredit "Hitotobi Games".',
             en: 'A no-code quest system: kill and collect quests progress automatically via tags, with an on-screen tracker, objective compass, quest chains, and popup notifications. Free for commercial and non-commercial projects; just credit "Hitotobi Games".' },
     video: '', links: [{ l: { id: 'Lihat di Itch.io', en: 'View on Itch.io' }, u: 'https://hitotobi-games.itch.io/', i: 'itchdotio' }] },
-  { title: 'Forest Camp Map', cat: 'asset', img: 'assets/forest-camp-map.png',
+  { title: 'Forest Camp Map', cat: 'asset', sub: 'map', img: 'assets/forest-camp-map.png',
     desc: { id: 'Map perkemahan hutan bergaya pixel art.', en: 'Pixel-art forest camp map.' },
     long: { id: 'Map perkemahan di tengah hutan dengan beberapa rumah kecil, siap dipakai di game RPG-mu.',
             en: 'A forest camp map with a few small houses, ready to use in your RPG game.' },
     video: '', links: [{ l: { id: 'Lihat di Itch.io', en: 'View on Itch.io' }, u: 'https://hitotobi-games.itch.io/', i: 'itchdotio' }] },
-  { title: 'House Map Interior Pack', cat: 'asset', img: 'assets/house-map-interior.png',
+  { title: 'House Map Interior Pack', cat: 'asset', sub: 'map', img: 'assets/house-map-interior.png',
     desc: { id: 'Paket map interior 3 rumah: kamar, dapur, ruang tamu, dan lainnya.', en: 'Interior map pack for 3 houses: bedrooms, kitchen, living room, and more.' },
     long: { id: 'Tiga tipe interior rumah dengan kamar tidur, ruang tamu, dapur, dan ruang makan, plus toilet dan kamar mandi di rumah ke-2. Boleh dipakai komersial maupun non-komersial; beri kredit jika dipakai komersial.',
             en: 'Three house interiors with bedrooms, living room, kitchen, and dining room, plus a toilet and bathroom in house 2. Free for commercial and non-commercial use; credit required for commercial use.' },
@@ -117,23 +122,3 @@ export const PROJECTS = [
 // enabled: false -> matikan animasi pembuka.
 // oncePerSession: true -> hanya tampil sekali per tab/sesi browser (refresh tidak mengulang).
 export const INTRO = { enabled: true, oncePerSession: false };
-
-// ---------- EXPERIENCE ----------
-// role, desc = teks dua bahasa. org = nama studio/tempat. period (opsional) = periode, contoh:
-//   period: { id: '2024 – Sekarang', en: '2024 – Present' }
-// points (opsional) = daftar poin pencapaian: [{ id: '...', en: '...' }]
-// current: true -> titik berdenyut (peran yang sedang dijalani). Urutan: terbaru di atas.
-export const EXPERIENCE = [
-  { role: { id: 'Founder & Developer', en: 'Founder & Developer' }, org: 'Hitotobi Games',
-    period: { id: 'Sekarang', en: 'Present' }, current: true,
-    desc: { id: 'Memimpin studio indie dan mengembangkan game RPG fantasi romantis "Three Word Left Unsaid" dengan RPG Maker MZ.',
-            en: 'Leading an indie studio and developing the romantic fantasy RPG "Three Word Left Unsaid" with RPG Maker MZ.' },
-    tags: ['RPG Maker MZ', 'JavaScript'] },
-  { role: { id: 'Asset Developer', en: 'Asset Developer' }, org: 'Itch.io · hitotobi-games',
-    desc: { id: 'Merilis aset game untuk developer lain: plugin QuestManager, Forest Camp Map, dan House Map Interior Pack.',
-            en: 'Releasing game assets for other developers: the QuestManager plugin, Forest Camp Map, and House Map Interior Pack.' },
-    tags: ['Plugin', 'Map Assets'] },
-  { role: { id: 'App Developer', en: 'App Developer' }, org: 'Hitotobi Games',
-    desc: { id: 'Membangun aplikasi Android dan lintas platform.', en: 'Building Android and cross-platform apps.' },
-    tags: ['Flutter', 'Dart', 'Kotlin'] }
-];
