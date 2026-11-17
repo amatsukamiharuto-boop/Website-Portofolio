@@ -8,6 +8,7 @@ import Projects from '../components/Projects';
 import Contact from '../components/Contact';
 import Footer from '../components/Footer';
 import AOSInit from '../components/AOSInit';
+import Divider from '../components/Divider';
 
 export default function Page() {
   return (
@@ -15,11 +16,17 @@ export default function Page() {
       <Navbar />
       <main>
         <Hero />
+        <Divider />
         <About />
+        <Divider />
         <Experience />
+        <Divider />
         <Status />
+        <Divider />
         <TechStack />
+        <Divider />
         <Projects />
+        <Divider />
         <Contact />
       </main>
       <Footer />
