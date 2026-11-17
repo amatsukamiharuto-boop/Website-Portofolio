@@ -58,12 +58,12 @@ export const EXPERIENCE = [
             en: 'Leading an indie studio and developing the romantic fantasy RPG "Three Word Left Unsaid" with RPG Maker MZ.' },
     tags: ['RPG Maker MZ', 'JavaScript'] },
   { role: { id: 'Asset Developer', en: 'Asset Developer' }, org: 'Itch.io · hitotobi-games',
-    start: '2026-07-02', end: '2026-09-12',
+    start: '2026-07-02', end: '', current: true,
     desc: { id: 'Merilis aset game untuk developer lain: plugin QuestManager, Forest Camp Map, dan House Map Interior Pack.',
             en: 'Releasing game assets for other developers: the QuestManager plugin, Forest Camp Map, and House Map Interior Pack.' },
     tags: ['Plugin', 'Map Assets'] },
   { role: { id: 'App Developer', en: 'App Developer' }, org: 'Hitotobi Games',
-    start: '2026-10', end: '',
+    start: '2026-10', end: '', current: true,
     desc: { id: 'Membangun aplikasi Android dan lintas platform.', en: 'Building Android and cross-platform apps.' },
     tags: ['Flutter', 'Dart', 'Kotlin'] }
 ];
