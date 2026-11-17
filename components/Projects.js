@@ -4,7 +4,7 @@ import AOS from 'aos';
 import Icon from './Icon';
 import L from './L';
 import { CONFIG, PROJECTS, asset } from '../data/site';
-import { CATS } from '../data/i18n';
+import { CATS, SUBS } from '../data/i18n';
 
 // Gambar thumbnail; jika file belum ada/gagal dimuat, tampil kotak berwarna berisi judul
 function Thumb({ src, title, className = '', ...rest }) {
@@ -17,14 +17,22 @@ export default function Projects() {
   const itchUrl = CONFIG.socials.find(s => s.slug === 'itchdotio')?.url;
   const cats = useMemo(() => ['all', ...Object.keys(CATS)], []);
   const [cat, setCat] = useState('all');
+  const [sub, setSub] = useState('all');
   const [sel, setSel] = useState(null);
-  const list = PROJECTS.filter(p => cat === 'all' || p.cat === cat);
+
   const label = c => (c === 'all' ? { id: 'Semua', en: 'All' } : CATS[c] || { id: c, en: c });
+  const subLabel = p => SUBS[p.cat]?.[p.sub];
+
+  const inCat = PROJECTS.filter(p => cat === 'all' || p.cat === cat);
+  const list = inCat.filter(p => sub === 'all' || p.sub === sub);
+  const subKeys = cat === 'all' ? [] : Object.keys(SUBS[cat] || {});
+
+  const pickCat = c => { setCat(c); setSub('all'); };
 
   // Muat ulang animasi saat filter berganti
   useEffect(() => {
     try { if (document.documentElement.classList.contains('aos-ready')) AOS.refreshHard(); } catch (e) {}
-  }, [cat]);
+  }, [cat, sub]);
 
   // Modal: tutup dengan Esc, kunci scroll halaman
   useEffect(() => {
@@ -42,9 +50,24 @@ export default function Projects() {
 
       <div role="tablist" className="flex flex-wrap gap-2 mt-6" data-aos="fade-up" data-aos-delay="150">
         {cats.map(c => (
-          <button key={c} role="tab" className="tab" aria-selected={c === cat} onClick={() => setCat(c)}><L t={label(c)} /></button>
+          <button key={c} role="tab" className="tab" aria-selected={c === cat} onClick={() => pickCat(c)}><L t={label(c)} /></button>
         ))}
       </div>
+
+      {/* Sub-kategori (Plugin, Map, dst.) muncul setelah memilih kategori utama */}
+      {subKeys.length > 0 && (
+        <div key={cat} role="tablist" className="flex flex-wrap gap-2 mt-3" aria-label="Sub-kategori / Sub-category">
+          {['all', ...subKeys].map((k, n) => {
+            const count = k === 'all' ? inCat.length : inCat.filter(p => p.sub === k).length;
+            return (
+              <button key={k} role="tab" className={`subtab ${count === 0 ? 'zero' : ''}`} style={{ '--n': n }}
+                aria-selected={k === sub} onClick={() => setSub(k)}>
+                <L t={k === 'all' ? { id: 'Semua', en: 'All' } : SUBS[cat][k]} /><small>{count}</small>
+              </button>
+            );
+          })}
+        </div>
+      )}
 
       {list.length === 0 && (
         <div className="empty-box" data-aos="fade-up"><L k="empty" /></div>
@@ -56,7 +79,10 @@ export default function Projects() {
             <button className="card surface" aria-label={p.title} onClick={() => setSel(p)}>
               <Thumb src={p.img} title={p.title} loading="lazy" width="640" height="360" />
               <div className="p-5">
-                <span className="tag"><L t={label(p.cat)} /></span>
+                <div className="flex flex-wrap gap-2">
+                  <span className="tag"><L t={label(p.cat)} /></span>
+                  {subLabel(p) && <span className="tag tag-sub"><L t={subLabel(p)} /></span>}
+                </div>
                 <h3 className="text-lg font-extrabold mt-2">{p.title}</h3>
                 <p className="muted text-sm mt-1"><L t={p.desc} /></p>
               </div>
@@ -83,7 +109,10 @@ export default function Projects() {
             <div className="p-6">
               <div className="flex items-start justify-between gap-4">
                 <div>
-                  <span className="tag"><L t={label(sel.cat)} /></span>
+                  <div className="flex flex-wrap gap-2">
+                    <span className="tag"><L t={label(sel.cat)} /></span>
+                    {subLabel(sel) && <span className="tag tag-sub"><L t={subLabel(sel)} /></span>}
+                  </div>
                   <h3 id="mTitle" className="text-2xl font-extrabold mt-2">{sel.title}</h3>
                 </div>
                 <button className="iconbtn shrink-0" aria-label="Tutup / Close" autoFocus onClick={() => setSel(null)}>
