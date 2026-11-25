@@ -47,7 +47,10 @@ export const MILESTONES = [
   { date: '2026-7-01', cat: 'game', sub: 'rpg', status: 'doing', title: 'Three Word Left Unsaid',
     desc: { id: 'Game RPG fantasi romantis. Chapter 1 sedang dikerjakan.', en: 'Romantic fantasy RPG. Chapter 1 is in progress.' } },
   { date: '2026-12', cat: 'game', sub: 'rpg', status: 'planned', title: 'Three Word Left Unsaid · Chapter 2',
-    desc: { id: 'Target mulai pengerjaan chapter berikutnya.', en: 'Planned start of the next chapter.' } }
+    desc: { id: 'Target mulai pengerjaan chapter berikutnya.', en: 'Planned start of the next chapter.' } },
+  // TODO: ganti date dan status ('done' | 'doing' | 'planned') sesuai kenyataan
+  { date: '2026-11', cat: 'app', sub: 'android', status: 'doing', title: "Ren'Play",
+    desc: { id: 'Aplikasi Android.', en: 'Android app.' } }
 ];
 
 // Peran. start/end -> periode tampil otomatis (Jun 2026 – Sekarang). current: true -> titik berdenyut.

@@ -1,18 +1,22 @@
 'use client';
 import { useEffect, useRef, useState } from 'react';
+import Link from 'next/link';
 import L from './L';
 import LangToggle from './LangToggle';
 import ThemeToggle from './ThemeToggle';
 import { CONFIG } from '../data/site';
 
+// Awalan "/" membuat link anchor tetap bekerja dari halaman lain (misal /portfolio).
+// Item kedua: kunci teks di i18n (string) atau objek { id, en } langsung.
 const LINKS = [
-  ['#tentang', 'navAbout'],
-  ['#experience', 'navExperience'],
-  ['#status', 'navStatus'],
-  ['#stack', 'navStack'],
-  ['#projects', 'navProjects'],
-  ['#whatsapp', 'navWhatsapp'],
-  ['#email', 'navEmail']
+  ['/#tentang', 'navAbout'],
+  ['/#experience', 'navExperience'],
+  ['/#status', 'navStatus'],
+  ['/#stack', 'navStack'],
+  ['/#projects', 'navProjects'],
+  ['/portfolio', { id: 'Portofolio', en: 'Portfolio' }],
+  ['/#whatsapp', 'navWhatsapp'],
+  ['/#email', 'navEmail']
 ];
 
 export default function Navbar() {
@@ -35,7 +39,7 @@ export default function Navbar() {
   return (
     <header className="sticky top-0 z-40 backdrop-blur" style={{ background: 'color-mix(in srgb,var(--bg) 85%,transparent)', borderBottom: '1px solid var(--line)' }}>
       <nav ref={box} className="relative max-w-6xl mx-auto px-5 h-16 flex items-center justify-between">
-        <a href="#home" className="brand font-extrabold text-xl" onClick={() => setOpen(false)}>{CONFIG.studio}</a>
+        <Link href="/" className="brand font-extrabold text-xl" onClick={() => setOpen(false)}>{CONFIG.studio}</Link>
 
         <div className="flex items-center gap-2">
           <LangToggle />
@@ -50,9 +54,9 @@ export default function Navbar() {
           <ul>
             {LINKS.map(([href, key], i) => (
               <li key={href}>
-                <a href={href} className="menu-item" style={{ '--i': i }} onClick={() => setOpen(false)}>
-                  <L k={key} />
-                </a>
+                <Link href={href} className="menu-item" style={{ '--i': i }} onClick={() => setOpen(false)}>
+                  {typeof key === 'string' ? <L k={key} /> : <L t={key} />}
+                </Link>
               </li>
             ))}
           </ul>

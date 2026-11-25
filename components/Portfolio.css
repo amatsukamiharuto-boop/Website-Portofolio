@@ -1,0 +1,27 @@
+/* Gaya halaman /portfolio. Diimpor oleh components/Projects.js */
+
+.pf-back{display:inline-flex;align-items:center;gap:.4rem;font-size:.875rem;font-weight:500;color:var(--muted);transition:color .15s}
+.pf-back:hover{color:var(--accent)}
+.pf-back span{transition:transform .2s}
+.pf-back:hover span{transform:translateX(-3px)}
+
+/* Kotak ringkasan sekaligus filter kategori */
+.pf-tabs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.6rem;margin-top:2rem}
+@media (min-width:760px){.pf-tabs{grid-template-columns:repeat(4,minmax(0,1fr))}}
+.pf-tab{display:flex;flex-direction:column;gap:.6rem;padding:.9rem 1.1rem 1rem;text-align:left;border:1px solid var(--line);border-radius:.9rem;background:var(--surface);
+  transition:border-color .2s,background .2s,transform .2s}
+.pf-tab:hover{border-color:var(--c,var(--accent));transform:translateY(-2px)}
+.pf-tab[aria-selected="true"]{border-color:var(--c,var(--accent));background:color-mix(in srgb,var(--c,var(--accent)) 12%,var(--surface))}
+.pf-tab-name{display:flex;align-items:center;gap:.55rem;font-size:.8125rem;font-weight:600;color:var(--muted)}
+.pf-tab[aria-selected="true"] .pf-tab-name{color:var(--text)}
+.pf-tab-n{font-family:var(--font-head),sans-serif;font-size:2rem;font-weight:800;line-height:1;font-variant-numeric:tabular-nums}
+
+/* Baris info hasil filter */
+.pf-meta{display:flex;align-items:center;justify-content:space-between;gap:1rem;margin-top:1.75rem;padding-top:1rem;border-top:1px solid var(--line);font-size:.8125rem;color:var(--muted)}
+.pf-meta b{color:var(--text);font-variant-numeric:tabular-nums}
+
+/* Ajakan di bagian bawah halaman */
+.pf-cta{display:flex;flex-direction:column;gap:1.25rem;margin-top:4rem;padding:1.75rem;border:1px solid var(--line);border-left:3px solid var(--accent);border-radius:1rem;background:var(--surface)}
+@media (min-width:640px){.pf-cta{flex-direction:row;align-items:center;justify-content:space-between}}
+
+@media (prefers-reduced-motion:reduce){.pf-tab,.pf-back span{transition:none!important}}

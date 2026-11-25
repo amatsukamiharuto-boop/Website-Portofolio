@@ -1,10 +1,15 @@
 'use client';
 import { useEffect, useMemo, useState } from 'react';
+import Link from 'next/link';
 import AOS from 'aos';
 import Icon from './Icon';
 import L from './L';
 import { CONFIG, PROJECTS, asset } from '../data/site';
 import { CATS, SUBS } from '../data/i18n';
+import './Portfolio.css';
+
+// Jumlah proyek yang tampil di beranda (mode preview). Sisanya ada di halaman /portfolio.
+const HOME_LIMIT = 6;
 
 // Gambar thumbnail; jika file belum ada/gagal dimuat, tampil kotak berwarna berisi judul
 function Thumb({ src, title, className = '', ...rest }) {
@@ -13,19 +18,26 @@ function Thumb({ src, title, className = '', ...rest }) {
   return <img src={asset(src)} alt={`Thumbnail ${title}`} className={className} onError={() => setBad(true)} {...rest} />;
 }
 
-export default function Projects() {
+// full = true  -> halaman /portfolio: semua proyek + ringkasan + filter kategori & sub-kategori
+// full = false -> beranda: proyek terbaru saja + tombol menuju /portfolio
+export default function Projects({ full = false }) {
   const itchUrl = CONFIG.socials.find(s => s.slug === 'itchdotio')?.url;
-  const cats = useMemo(() => ['all', ...Object.keys(CATS)], []);
+  const catKeys = useMemo(() => Object.keys(CATS), []);
   const [cat, setCat] = useState('all');
   const [sub, setSub] = useState('all');
   const [sel, setSel] = useState(null);
 
+  // Terbaru di depan (proyek yang ditulis paling bawah di PROJECTS tampil paling dulu)
+  const ordered = useMemo(() => [...PROJECTS].reverse(), []);
+  const source = full ? ordered : ordered.slice(0, HOME_LIMIT);
+
   const label = c => (c === 'all' ? { id: 'Semua', en: 'All' } : CATS[c] || { id: c, en: c });
   const subLabel = p => SUBS[p.cat]?.[p.sub];
 
-  const inCat = PROJECTS.filter(p => cat === 'all' || p.cat === cat);
+  const inCat = source.filter(p => cat === 'all' || p.cat === cat);
   const list = inCat.filter(p => sub === 'all' || p.sub === sub);
-  const subKeys = cat === 'all' ? [] : Object.keys(SUBS[cat] || {});
+  const subKeys = full && cat !== 'all' ? Object.keys(SUBS[cat] || {}) : [];
+  const countOf = k => (k === 'all' ? source.length : source.filter(p => p.cat === k).length);
 
   const pickCat = c => { setCat(c); setSub('all'); };
 
@@ -43,24 +55,46 @@ export default function Projects() {
     return () => { document.removeEventListener('keydown', onKey); document.body.style.overflow = ''; };
   }, [sel]);
 
-  return (
-    <section id="projects" className="max-w-6xl mx-auto px-5 py-16">
-      <h2 className="text-2xl sm:text-3xl font-extrabold" data-aos="fade-up"><L k="projectsTitle" /></h2>
-      <p className="muted mt-2" data-aos="fade-up" data-aos-delay="100"><L k="projectsSub" /></p>
+  const Title = full ? 'h1' : 'h2';
+  const n = list.length;
 
-      <div role="tablist" className="flex flex-wrap gap-2 mt-6" data-aos="fade-up" data-aos-delay="150">
-        {cats.map(c => (
-          <button key={c} role="tab" className="tab" aria-selected={c === cat} onClick={() => pickCat(c)}><L t={label(c)} /></button>
-        ))}
-      </div>
+  return (
+    <section id="projects" className={`max-w-6xl mx-auto px-5 ${full ? 'pt-10 pb-16' : 'py-16'}`}>
+      {full && (
+        <Link href="/" className="pf-back" data-aos="fade-up"><span aria-hidden="true">‹</span><L t={{ id: 'Kembali ke beranda', en: 'Back to home' }} /></Link>
+      )}
+
+      <Title className={`${full ? 'mt-5 text-4xl sm:text-5xl' : 'text-2xl sm:text-3xl'} font-extrabold`} data-aos="fade-up">
+        {full ? <L t={{ id: 'Portofolio', en: 'Portfolio' }} /> : <L k="projectsTitle" />}
+      </Title>
+      <p className="muted mt-2 max-w-2xl" data-aos="fade-up" data-aos-delay="100">
+        {full
+          ? <L t={{ id: 'Semua game, aset, dan aplikasi buatan Hitotobi Games. Pilih kategori, lalu klik kartu untuk melihat detailnya.', en: 'Every game, asset, and app made by Hitotobi Games. Pick a category, then click a card to see the details.' }} />
+          : <L t={{ id: 'Proyek terbaru. Klik kartu untuk melihat detailnya.', en: 'Latest projects. Click a card to see the details.' }} />}
+      </p>
+
+      {/* Halaman penuh: kotak ringkasan yang sekaligus menjadi filter kategori */}
+      {full && (
+        <div role="tablist" aria-label="Kategori / Category" className="pf-tabs" data-aos="fade-up" data-aos-delay="150">
+          {['all', ...catKeys].map(k => (
+            <button key={k} role="tab" className="pf-tab" data-cat={k === 'all' ? undefined : k} aria-selected={k === cat} onClick={() => pickCat(k)}>
+              <span className="pf-tab-name">
+                {k !== 'all' && <i className="mk" data-cat={k} />}
+                <L t={label(k)} />
+              </span>
+              <span className="pf-tab-n">{countOf(k)}</span>
+            </button>
+          ))}
+        </div>
+      )}
 
       {/* Sub-kategori (Plugin, Map, dst.) muncul setelah memilih kategori utama */}
       {subKeys.length > 0 && (
-        <div key={cat} role="tablist" className="flex flex-wrap gap-2 mt-3" aria-label="Sub-kategori / Sub-category">
-          {['all', ...subKeys].map((k, n) => {
+        <div key={cat} role="tablist" className="flex flex-wrap gap-2 mt-4" aria-label="Sub-kategori / Sub-category">
+          {['all', ...subKeys].map((k, i) => {
             const count = k === 'all' ? inCat.length : inCat.filter(p => p.sub === k).length;
             return (
-              <button key={k} role="tab" className={`subtab ${count === 0 ? 'zero' : ''}`} style={{ '--n': n }}
+              <button key={k} role="tab" className={`subtab ${count === 0 ? 'zero' : ''}`} style={{ '--n': i }}
                 aria-selected={k === sub} onClick={() => setSub(k)}>
                 <L t={k === 'all' ? { id: 'Semua', en: 'All' } : SUBS[cat][k]} /><small>{count}</small>
               </button>
@@ -69,13 +103,20 @@ export default function Projects() {
         </div>
       )}
 
+      {full && (
+        <p className="pf-meta" aria-live="polite">
+          <span><L t={{ id: `Menampilkan ${n} proyek`, en: `Showing ${n} ${n === 1 ? 'project' : 'projects'}` }} /></span>
+          <span><L t={{ id: 'Terbaru di atas', en: 'Newest first' }} /></span>
+        </p>
+      )}
+
       {list.length === 0 && (
         <div className="empty-box" data-aos="fade-up"><L k="empty" /></div>
       )}
 
-      <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 mt-8">
-        {list.map((p, n) => (
-          <div key={p.title} className="h-full" data-aos="fade-up" data-aos-delay={(n % 3) * 100}>
+      <div className={`grid sm:grid-cols-2 lg:grid-cols-3 gap-5 ${full ? 'mt-6' : 'mt-8'}`}>
+        {list.map((p, i) => (
+          <div key={p.title} className="h-full" data-aos="fade-up" data-aos-delay={(i % 3) * 100}>
             <button className="card surface" aria-label={p.title} onClick={() => setSel(p)}>
               <Thumb src={p.img} title={p.title} loading="lazy" width="640" height="360" />
               <div className="p-5">
@@ -91,9 +132,23 @@ export default function Projects() {
         ))}
       </div>
 
-      {itchUrl && (
-        <div className="mt-8 flex justify-center" data-aos="fade-up">
+      <div className="mt-8 flex flex-wrap justify-center gap-3" data-aos="fade-up">
+        {!full && (
+          <Link className="btn btn-primary" href="/portfolio"><L t={{ id: 'Lihat semua proyek', en: 'View all projects' }} /> ›</Link>
+        )}
+        {itchUrl && (
           <a className="btn btn-ghost" href={itchUrl} target="_blank" rel="noopener noreferrer"><Icon slug="itchdotio" /><L k="itchAll" /></a>
+        )}
+      </div>
+
+      {/* Ajakan kontak di akhir halaman portfolio */}
+      {full && (
+        <div className="pf-cta" data-aos="fade-up">
+          <div>
+            <h2 className="text-xl sm:text-2xl font-extrabold"><L t={{ id: 'Punya proyek atau ide kolaborasi?', en: 'Have a project or a collaboration idea?' }} /></h2>
+            <p className="muted mt-1"><L t={{ id: 'Ceritakan lewat WhatsApp atau email, saya senang berdiskusi.', en: 'Tell me via WhatsApp or email, happy to talk.' }} /></p>
+          </div>
+          <Link className="btn btn-primary justify-center" href="/#whatsapp"><L k="heroCta2" /></Link>
         </div>
       )}
 

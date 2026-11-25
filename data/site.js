@@ -115,7 +115,11 @@ export const PROJECTS = [
     desc: { id: 'Paket map interior 3 rumah: kamar, dapur, ruang tamu, dan lainnya.', en: 'Interior map pack for 3 houses: bedrooms, kitchen, living room, and more.' },
     long: { id: 'Tiga tipe interior rumah dengan kamar tidur, ruang tamu, dapur, dan ruang makan, plus toilet dan kamar mandi di rumah ke-2. Boleh dipakai komersial maupun non-komersial; beri kredit jika dipakai komersial.',
             en: 'Three house interiors with bedrooms, living room, kitchen, and dining room, plus a toilet and bathroom in house 2. Free for commercial and non-commercial use; credit required for commercial use.' },
-    video: '', links: [{ l: { id: 'Lihat di Itch.io', en: 'View on Itch.io' }, u: 'https://hitotobi-games.itch.io/', i: 'itchdotio' }] }
+    video: '', links: [{ l: { id: 'Lihat di Itch.io', en: 'View on Itch.io' }, u: 'https://hitotobi-games.itch.io/', i: 'itchdotio' }] },
+  { title: "Ren'Play", cat: 'app', sub: 'android', img: 'assets/renplay.png',
+    desc: { id: 'Aplikasi Android dari Hitotobi Games.', en: 'An Android app by Hitotobi Games.' },
+    long: { id: "Deskripsi lengkap Ren'Play akan diperbarui.", en: "Full Ren'Play description coming soon." },
+    video: '', links: [] }
 ];
 
 // ---------- ANIMASI PEMBUKA (terminal / hacker) ----------
